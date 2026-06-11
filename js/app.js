@@ -46,7 +46,7 @@ function calculate() {
     document.getElementById("re").innerHTML =
         Re.toExponential(3);
 
-}
+
 const selectedAirfoil =
 document.getElementById("airfoil").value;
 
@@ -72,4 +72,5 @@ else
     `❌ FAIL<br>
     Airfoil CLmax = ${airfoilCLmax}<br>
     Required = ${CLmax.toFixed(3)}`;
+}
 }
