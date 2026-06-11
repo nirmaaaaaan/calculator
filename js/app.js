@@ -1,67 +1,49 @@
-body{
-margin:0;
-font-family:Arial;
-background:#0d1117;
-color:#e6edf3;
-display:flex;
-}
+function calculate() {
 
-.sidebar{
-width:240px;
-background:#161b22;
-height:100vh;
-padding:20px;
-}
+    const mass = parseFloat(document.getElementById("mass").value);
+    const g = parseFloat(document.getElementById("g").value);
+    const rho = parseFloat(document.getElementById("rho").value);
 
-.sidebar ul{
-list-style:none;
-padding:0;
-}
+    const S = parseFloat(document.getElementById("area").value);
 
-.sidebar li{
-padding:12px;
-margin:5px 0;
-background:#21262d;
-border-radius:8px;
-}
+    const Vc = parseFloat(document.getElementById("vc").value);
 
-.main{
-flex:1;
-padding:25px;
-}
+    const Vs = parseFloat(document.getElementById("vs").value);
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-}
+    const span = parseFloat(document.getElementById("span").value);
 
-.card,.result-card{
-background:#161b22;
-padding:15px;
-border-radius:10px;
-}
+    const chord = parseFloat(document.getElementById("chord").value);
 
-input,select{
-width:100%;
-padding:10px;
-background:#21262d;
-border:none;
-color:white;
-}
+    const W = mass * g;
 
-button{
-padding:12px 20px;
-background:#58a6ff;
-border:none;
-border-radius:8px;
-margin:20px 0;
-cursor:pointer;
-}
+    const CL = (2 * W) / (rho * Vc * Vc * S);
 
-.results{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-top:20px;
+    const CLmax = (2 * W) / (rho * Vs * Vs * S);
+
+    const wingLoading = mass / S;
+
+    const AR = (span * span) / S;
+
+    const mu = 1.81e-5;
+
+    const Re = (rho * Vc * chord) / mu;
+
+    document.getElementById("weight").innerHTML =
+        W.toFixed(2) + " N";
+
+    document.getElementById("cl").innerHTML =
+        CL.toFixed(3);
+
+    document.getElementById("clmax").innerHTML =
+        CLmax.toFixed(3);
+
+    document.getElementById("wl").innerHTML =
+        wingLoading.toFixed(2) + " kg/m²";
+
+    document.getElementById("ar").innerHTML =
+        AR.toFixed(2);
+
+    document.getElementById("re").innerHTML =
+        Re.toExponential(3);
+
 }
