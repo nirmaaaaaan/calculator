@@ -165,6 +165,46 @@ Calculate Required Wing Area
 
 </div>
 
+<h2>VTOL Weight Estimator</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Airframe (g)</h3>
+<input type="number" id="airframe" value="1000">
+</div>
+
+<div class="card">
+<h3>Electronics (g)</h3>
+<input type="number" id="electronics" value="900">
+</div>
+
+<div class="card">
+<h3>Battery (g)</h3>
+<input type="number" id="battery" value="1350">
+</div>
+
+<div class="card">
+<h3>Payload (g)</h3>
+<input type="number" id="payload" value="500">
+</div>
+
+</div>
+
+<button onclick="weightCalc()">
+Calculate Total Weight
+</button>
+
+<div class="result-card">
+<h4>Total Weight</h4>
+<p id="totalWeight">-</p>
+</div>
+
+<div class="result-card">
+<h4>Total Mass</h4>
+<p id="totalMass">-</p>
+</div>
+
 <script src="js/airfoils.js"></script>
 <script src="js/app.js"></script>
 

@@ -118,3 +118,36 @@ function wingAreaCalc() {
     document.getElementById("requiredArea").innerHTML =
         requiredArea.toFixed(3) + " m²";
 }
+
+function weightCalc()
+{
+    const airframe =
+    parseFloat(document.getElementById("airframe").value);
+
+    const electronics =
+    parseFloat(document.getElementById("electronics").value);
+
+    const battery =
+    parseFloat(document.getElementById("battery").value);
+
+    const payload =
+    parseFloat(document.getElementById("payload").value);
+
+    const totalGrams =
+    airframe +
+    electronics +
+    battery +
+    payload;
+
+    const totalKg =
+    totalGrams / 1000;
+
+    const totalWeight =
+    totalKg * 9.81;
+
+    document.getElementById("totalMass").innerHTML =
+    totalKg.toFixed(2) + " kg";
+
+    document.getElementById("totalWeight").innerHTML =
+    totalWeight.toFixed(2) + " N";
+}
