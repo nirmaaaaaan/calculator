@@ -76,6 +76,16 @@
 
 <div class="results">
 
+    <div class="result-card">
+    <h4>Lift Produced</h4>
+    <p id="lift"></p>
+</div>
+
+<div class="result-card">
+    <h4>CLmax Margin</h4>
+    <p id="margin"></p>
+</div>
+
 <div class="result-card">
 <h4>Weight</h4>
 <p id="weight"></p>
@@ -125,6 +135,22 @@
 
 <canvas id="chart"></canvas>
 
+</div>
+
+<h2>Wing Area Sizing</h2>
+
+<div class="card">
+    <h3>Target CLmax</h3>
+    <input type="number" id="targetCL" value="2.25">
+</div>
+
+<button onclick="wingAreaCalc()">
+Calculate Required Wing Area
+</button>
+
+<div class="result-card">
+    <h4>Required Wing Area</h4>
+    <p id="requiredArea"></p>
 </div>
 
 <script src="js/airfoils.js"></script>

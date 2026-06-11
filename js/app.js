@@ -104,6 +104,12 @@ airfoils[selectedAirfoil];
 const result =
 document.getElementById("airfoilResult");
 
+const margin =
+((airfoilCLmax - CLmax)/CLmax)*100;
+
+document.getElementById("margin").innerHTML =
+margin.toFixed(1) + "%";
+
 if (airfoilCLmax >= CLmax)
 {
     const margin =
@@ -122,4 +128,37 @@ else
     Required = ${CLmax.toFixed(3)}`;
 }
 
+const Lift =
+0.5 * rho * Vc * Vc * S * CL;
+
+document.getElementById("lift").innerHTML =
+Lift.toFixed(2) + " N";
+
+}
+
+
+function wingAreaCalc()
+{
+    const mass =
+    parseFloat(document.getElementById("mass").value);
+
+    const g =
+    parseFloat(document.getElementById("g").value);
+
+    const rho =
+    parseFloat(document.getElementById("rho").value);
+
+    const Vs =
+    parseFloat(document.getElementById("vs").value);
+
+    const CLmax =
+    parseFloat(document.getElementById("targetCL").value);
+
+    const W = mass*g;
+
+    const S =
+    (2*W)/(rho*Vs*Vs*CLmax);
+
+    document.getElementById("requiredArea").innerHTML =
+    S.toFixed(3)+" m²";
 }
