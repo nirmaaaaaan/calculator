@@ -1,27 +1,33 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Aerothon UAV Toolkit</title>
 
 <link rel="stylesheet" href="css/style.css">
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
 <div class="sidebar">
-    <h2>✈ Aerothon Toolkit</h2>
 
-    <ul>
-        <li>Dashboard</li>
-        <li>Lift & CL</li>
-        <li>Wing Loading</li>
-        <li>Reynolds</li>
-        <li>Airfoils</li>
-    </ul>
+<h2>✈ Aerothon Toolkit</h2>
+
+<ul>
+<li>Dashboard</li>
+<li>Lift & CL</li>
+<li>Wing Loading</li>
+<li>Reynolds</li>
+<li>Airfoils</li>
+<li>Wing Area</li>
+</ul>
+
 </div>
 
 <div class="main">
@@ -67,24 +73,16 @@
 
 <div class="card">
 <h3>Chord (m)</h3>
-<input type="number" id="chord" value="0.2">
+<input type="number" id="chord" value="0.20">
 </div>
 
 </div>
 
 <button onclick="calculate()">Calculate</button>
 
+<h2>Results</h2>
+
 <div class="results">
-
-    <div class="result-card">
-    <h4>Lift Produced</h4>
-    <p id="lift"></p>
-</div>
-
-<div class="result-card">
-    <h4>CLmax Margin</h4>
-    <p id="margin"></p>
-</div>
 
 <div class="result-card">
 <h4>Weight</h4>
@@ -116,7 +114,19 @@
 <p id="re"></p>
 </div>
 
+<div class="result-card">
+<h4>Lift Produced</h4>
+<p id="lift"></p>
 </div>
+
+<div class="result-card">
+<h4>CLmax Margin</h4>
+<p id="margin"></p>
+</div>
+
+</div>
+
+<hr>
 
 <h2>Airfoil Check</h2>
 
@@ -130,18 +140,18 @@
 </select>
 
 <div class="result-card">
-<p id="airfoilResult"></p>
+<p id="airfoilResult">
+Select an airfoil and click Calculate
+</p>
 </div>
 
-<canvas id="chart"></canvas>
-
-</div>
+<hr>
 
 <h2>Wing Area Sizing</h2>
 
 <div class="card">
-    <h3>Target CLmax</h3>
-    <input type="number" id="targetCL" value="2.25">
+<h3>Target CLmax</h3>
+<input type="number" id="targetCL" value="2.25" step="0.01">
 </div>
 
 <button onclick="wingAreaCalc()">
@@ -149,8 +159,10 @@ Calculate Required Wing Area
 </button>
 
 <div class="result-card">
-    <h4>Required Wing Area</h4>
-    <p id="requiredArea"></p>
+<h4>Required Wing Area</h4>
+<p id="requiredArea">-</p>
+</div>
+
 </div>
 
 <script src="js/airfoils.js"></script>
@@ -158,3 +170,4 @@ Calculate Required Wing Area
 
 </body>
 </html>
+```
