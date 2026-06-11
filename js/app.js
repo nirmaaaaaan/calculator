@@ -47,3 +47,29 @@ function calculate() {
         Re.toExponential(3);
 
 }
+const selectedAirfoil =
+document.getElementById("airfoil").value;
+
+const airfoilCLmax =
+airfoils[selectedAirfoil];
+
+const result =
+document.getElementById("airfoilResult");
+
+if (airfoilCLmax >= CLmax)
+{
+    const margin =
+    ((airfoilCLmax - CLmax) / CLmax * 100);
+
+    result.innerHTML =
+    `✅ PASS<br>
+    Airfoil CLmax = ${airfoilCLmax}<br>
+    Margin = ${margin.toFixed(1)}%`;
+}
+else
+{
+    result.innerHTML =
+    `❌ FAIL<br>
+    Airfoil CLmax = ${airfoilCLmax}<br>
+    Required = ${CLmax.toFixed(3)}`;
+}
