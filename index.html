@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerothon UAV Toolkit</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>✈ Aerothon Toolkit</h2>
+
+    <ul>
+        <li>Dashboard</li>
+        <li>Lift & CL</li>
+        <li>Wing Loading</li>
+        <li>Reynolds</li>
+        <li>Airfoils</li>
+    </ul>
+</div>
+
+<div class="main">
+
+<h1>Aerothon UAV Design Toolkit</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>Mass (kg)</h3>
+<input type="number" id="mass" value="4">
+</div>
+
+<div class="card">
+<h3>Gravity (m/s²)</h3>
+<input type="number" id="g" value="9.81">
+</div>
+
+<div class="card">
+<h3>Density (kg/m³)</h3>
+<input type="number" id="rho" value="1.225">
+</div>
+
+<div class="card">
+<h3>Wing Area (m²)</h3>
+<input type="number" id="area" value="0.40">
+</div>
+
+<div class="card">
+<h3>Cruise Speed (m/s)</h3>
+<input type="number" id="vc" value="16">
+</div>
+
+<div class="card">
+<h3>Stall Speed (m/s)</h3>
+<input type="number" id="vs" value="9">
+</div>
+
+<div class="card">
+<h3>Wingspan (m)</h3>
+<input type="number" id="span" value="2">
+</div>
+
+<div class="card">
+<h3>Chord (m)</h3>
+<input type="number" id="chord" value="0.2">
+</div>
+
+</div>
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="results">
+
+<div class="result-card">
+<h4>Weight</h4>
+<p id="weight"></p>
+</div>
+
+<div class="result-card">
+<h4>Cruise CL</h4>
+<p id="cl"></p>
+</div>
+
+<div class="result-card">
+<h4>Required CLmax</h4>
+<p id="clmax"></p>
+</div>
+
+<div class="result-card">
+<h4>Wing Loading</h4>
+<p id="wl"></p>
+</div>
+
+<div class="result-card">
+<h4>Aspect Ratio</h4>
+<p id="ar"></p>
+</div>
+
+<div class="result-card">
+<h4>Reynolds Number</h4>
+<p id="re"></p>
+</div>
+
+</div>
+
+<h2>Airfoil Check</h2>
+
+<select id="airfoil">
+<option>S1223</option>
+<option>NACA 7415</option>
+<option>NACA 6415</option>
+<option>NACA 6412</option>
+<option>NACA 4412</option>
+<option>SD7037</option>
+</select>
+
+<div class="result-card">
+<p id="airfoilResult"></p>
+</div>
+
+<canvas id="chart"></canvas>
+
+</div>
+
+<script src="js/airfoils.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
