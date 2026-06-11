@@ -1,235 +1,79 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Aerothon UAV Toolkit</title>
-
-<link rel="stylesheet" href="css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<title>Aerothon UAV Toolkit V2</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <div class="sidebar">
-
 <h2>✈ Aerothon Toolkit</h2>
-
 <ul>
 <li>Dashboard</li>
-<li>Lift & CL</li>
-<li>Wing Loading</li>
-<li>Reynolds</li>
-<li>Airfoils</li>
-<li>Wing Area</li>
+<li>Airfoil Analysis</li>
+<li>Wing Sizing</li>
+<li>Weight Estimator</li>
 </ul>
-
 </div>
 
 <div class="main">
-
 <h1>Aerothon UAV Design Toolkit</h1>
 
+<h2>Aircraft Inputs</h2>
 <div class="grid">
-
-<div class="card">
-<h3>Mass (kg)</h3>
-<input type="number" id="mass" value="4">
-</div>
-
-<div class="card">
-<h3>Gravity (m/s²)</h3>
-<input type="number" id="g" value="9.81">
-</div>
-
-<div class="card">
-<h3>Density (kg/m³)</h3>
-<input type="number" id="rho" value="1.225">
-</div>
-
-<div class="card">
-<h3>Wing Area (m²)</h3>
-<input type="number" id="area" value="0.40">
-</div>
-
-<div class="card">
-<h3>Cruise Speed (m/s)</h3>
-<input type="number" id="vc" value="16">
-</div>
-
-<div class="card">
-<h3>Stall Speed (m/s)</h3>
-<input type="number" id="vs" value="9">
-</div>
-
-<div class="card">
-<h3>Wingspan (m)</h3>
-<input type="number" id="span" value="2">
-</div>
-
-<div class="card">
-<h3>Chord (m)</h3>
-<input type="number" id="chord" value="0.20">
-</div>
-
+<div class="card"><h3>Mass (kg)</h3><input type="number" id="mass" value="4"></div>
+<div class="card"><h3>Gravity</h3><input type="number" id="g" value="9.81"></div>
+<div class="card"><h3>Density</h3><input type="number" id="rho" value="1.225"></div>
+<div class="card"><h3>Wing Area (m²)</h3><input type="number" id="area" value="0.40"></div>
+<div class="card"><h3>Cruise Speed</h3><input type="number" id="vc" value="16"></div>
+<div class="card"><h3>Stall Speed</h3><input type="number" id="vs" value="9"></div>
+<div class="card"><h3>Wingspan</h3><input type="number" id="span" value="2"></div>
+<div class="card"><h3>Chord</h3><input type="number" id="chord" value="0.2"></div>
 </div>
 
 <button onclick="calculate()">Calculate</button>
 
 <h2>Results</h2>
-
 <div class="results">
-
-<div class="result-card">
-<h4>Weight</h4>
-<p id="weight"></p>
+<div class="result-card"><h4>Weight</h4><p id="weight"></p></div>
+<div class="result-card"><h4>Cruise CL</h4><p id="cl"></p></div>
+<div class="result-card"><h4>Required CLmax</h4><p id="clmax"></p></div>
+<div class="result-card"><h4>Wing Loading</h4><p id="wl"></p></div>
+<div class="result-card"><h4>Aspect Ratio</h4><p id="ar"></p></div>
+<div class="result-card"><h4>Reynolds</h4><p id="re"></p></div>
+<div class="result-card"><h4>Lift</h4><p id="lift"></p></div>
+<div class="result-card"><h4>Margin</h4><p id="margin"></p></div>
 </div>
 
-<div class="result-card">
-<h4>Cruise CL</h4>
-<p id="cl"></p>
-</div>
-
-<div class="result-card">
-<h4>Required CLmax</h4>
-<p id="clmax"></p>
-</div>
-
-<div class="result-card">
-<h4>Wing Loading</h4>
-<p id="wl"></p>
-</div>
-
-<div class="result-card">
-<h4>Aspect Ratio</h4>
-<p id="ar"></p>
-</div>
-
-<div class="result-card">
-<h4>Reynolds Number</h4>
-<p id="re"></p>
-</div>
-
-<div class="result-card">
-<h4>Lift Produced</h4>
-<p id="lift"></p>
-</div>
-
-<div class="result-card">
-<h4>CLmax Margin</h4>
-<p id="margin"></p>
-</div>
-
-</div>
-
-<hr>
-
-<h2>Airfoil Check</h2>
-
+<h2>Airfoil Analysis</h2>
 <select id="airfoil">
 <option>S1223</option>
 <option>NACA 7415</option>
-<option>NACA 6415</option>
-<option>NACA 6412</option>
-<option>NACA 4412</option>
 <option>SD7037</option>
 </select>
-
-<div class="result-card">
-<p id="airfoilResult">
-Select an airfoil and click Calculate
-</p>
-</div>
-
-<hr>
+<div class="result-card"><p id="airfoilResult"></p></div>
 
 <h2>Wing Area Sizing</h2>
+<input type="number" id="targetCL" value="2.25">
+<button onclick="wingAreaCalc()">Calculate Wing Area</button>
+<div class="result-card"><p id="requiredArea"></p></div>
 
-<div class="card">
-<h3>Target CLmax</h3>
-<input type="number" id="targetCL" value="2.25" step="0.01">
-</div>
-
-<button onclick="wingAreaCalc()">
-Calculate Required Wing Area
-</button>
-
-<div class="result-card">
-<h4>Required Wing Area</h4>
-<p id="requiredArea">-</p>
-</div>
-
-</div>
-
-<h2>VTOL Weight Estimator</h2>
-
+<h2>Weight Estimator</h2>
 <div class="grid">
-
-<div class="card">
-<h3>Airframe (g)</h3>
-<input type="number" id="airframe" value="1000">
+<div class="card"><h3>Airframe (g)</h3><input type="number" id="airframe" value="1000"></div>
+<div class="card"><h3>Electronics (g)</h3><input type="number" id="electronics" value="900"></div>
+<div class="card"><h3>Battery (g)</h3><input type="number" id="battery" value="1350"></div>
+<div class="card"><h3>Payload (g)</h3><input type="number" id="payload" value="500"></div>
+</div>
+<button onclick="weightCalc()">Calculate Weight</button>
+<div class="results">
+<div class="result-card"><h4>Total Mass</h4><p id="totalMass"></p></div>
+<div class="result-card"><h4>Total Weight</h4><p id="totalWeight"></p></div>
 </div>
 
-<div class="card">
-<h3>Electronics (g)</h3>
-<input type="number" id="electronics" value="900">
+<script src="airfoils.js"></script>
+<script src="app.js"></script>
 </div>
-
-<div class="card">
-<h3>Battery (g)</h3>
-<input type="number" id="battery" value="1350">
-</div>
-
-<div class="card">
-<h3>Payload (g)</h3>
-<input type="number" id="payload" value="500">
-</div>
-
-</div>
-
-<button onclick="weightCalc()">
-Calculate Total Weight
-</button>
-
-<div class="result-card">
-<h4>Total Weight</h4>
-<p id="totalWeight">-</p>
-</div>
-
-<div class="result-card">
-<h4>Total Mass</h4>
-<p id="totalMass">-</p>
-</div>
-
-<div class="card">
-<h3>Airfoil CLmax</h3>
-<input type="number" id="inputCLmax" value="2.25">
-</div>
-
-<button onclick="stallCalc()">
-Calculate Stall Speed
-</button>
-
-<div class="result-card">
-<h4>Calculated Stall Speed</h4>
-<p id="stallResult">-</p>
-</div>
-
-<button onclick="generateSummary()">
-Generate Design Summary
-</button>
-
-<div class="result-card">
-<p id="summary"></p>
-</div>
-
-<script src="js/airfoils.js"></script>
-<script src="js/app.js"></script>
-
 </body>
 </html>
-```
