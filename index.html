@@ -205,6 +205,28 @@ Calculate Total Weight
 <p id="totalMass">-</p>
 </div>
 
+<div class="card">
+<h3>Airfoil CLmax</h3>
+<input type="number" id="inputCLmax" value="2.25">
+</div>
+
+<button onclick="stallCalc()">
+Calculate Stall Speed
+</button>
+
+<div class="result-card">
+<h4>Calculated Stall Speed</h4>
+<p id="stallResult">-</p>
+</div>
+
+<button onclick="generateSummary()">
+Generate Design Summary
+</button>
+
+<div class="result-card">
+<p id="summary"></p>
+</div>
+
 <script src="js/airfoils.js"></script>
 <script src="js/app.js"></script>
 

@@ -151,3 +151,71 @@ function weightCalc()
     document.getElementById("totalWeight").innerHTML =
     totalWeight.toFixed(2) + " N";
 }
+
+function stallCalc()
+{
+    const mass =
+    parseFloat(document.getElementById("mass").value);
+
+    const g =
+    parseFloat(document.getElementById("g").value);
+
+    const rho =
+    parseFloat(document.getElementById("rho").value);
+
+    const S =
+    parseFloat(document.getElementById("area").value);
+
+    const CLmax =
+    parseFloat(document.getElementById("inputCLmax").value);
+
+    const W = mass * g;
+
+    const Vs =
+    Math.sqrt((2 * W) /
+    (rho * S * CLmax));
+
+    document.getElementById("stallResult").innerHTML =
+    Vs.toFixed(2) + " m/s";
+}
+
+function generateSummary()
+{
+    const mass =
+    document.getElementById("mass").value;
+
+    const area =
+    document.getElementById("area").value;
+
+    const vc =
+    document.getElementById("vc").value;
+
+    const vs =
+    document.getElementById("vs").value;
+
+    const cl =
+    document.getElementById("cl").innerText;
+
+    const clmax =
+    document.getElementById("clmax").innerText;
+
+    const re =
+    document.getElementById("re").innerText;
+
+    document.getElementById("summary").innerHTML =
+`
+Mass: ${mass} kg <br>
+Wing Area: ${area} m² <br>
+Cruise Speed: ${vc} m/s <br>
+Stall Speed: ${vs} m/s <br>
+Cruise CL: ${cl} <br>
+Required CLmax: ${clmax} <br>
+Reynolds Number: ${re}
+`;
+}
+
+document.querySelectorAll("input,select")
+.forEach(element =>
+{
+    element.addEventListener("input", calculate);
+});
