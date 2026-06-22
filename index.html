@@ -25,25 +25,59 @@
 <div class="card"><h3>Mass (kg)</h3><input type="number" id="mass" value="4"></div>
 <div class="card"><h3>Gravity</h3><input type="number" id="g" value="9.81"></div>
 <div class="card"><h3>Density</h3><input type="number" id="rho" value="1.225"></div>
-<div class="card"><h3>Wing Area (m²)</h3><input type="number" id="area" value="0.40"></div>
 <div class="card"><h3>Cruise Speed</h3><input type="number" id="vc" value="16"></div>
 <div class="card"><h3>Stall Speed</h3><input type="number" id="vs" value="9"></div>
-<div class="card"><h3>Wingspan</h3><input type="number" id="span" value="2"></div>
-<div class="card"><h3>Chord</h3><input type="number" id="chord" value="0.2"></div>
 </div>
-
+<div class="card">
+<h3>Aspect Ratio</h3>
+<input type="number" id="arInput" value="8">
+</div>
 <button onclick="calculate()">Calculate</button>
 
 <h2>Results</h2>
+
 <div class="results">
-<div class="result-card"><h4>Weight</h4><p id="weight"></p></div>
-<div class="result-card"><h4>Cruise CL</h4><p id="cl"></p></div>
-<div class="result-card"><h4>Required CLmax</h4><p id="clmax"></p></div>
-<div class="result-card"><h4>Wing Loading</h4><p id="wl"></p></div>
-<div class="result-card"><h4>Aspect Ratio</h4><p id="ar"></p></div>
-<div class="result-card"><h4>Reynolds</h4><p id="re"></p></div>
-<div class="result-card"><h4>Lift</h4><p id="lift"></p></div>
-<div class="result-card"><h4>Margin</h4><p id="margin"></p></div>
+
+<div class="result-card">
+<h4>Weight</h4>
+<p id="weight"></p>
+</div>
+
+<div class="result-card">
+<h4>Wing Area</h4>
+<p id="areaOut"></p>
+</div>
+
+<div class="result-card">
+<h4>Wingspan</h4>
+<p id="spanOut"></p>
+</div>
+
+<div class="result-card">
+<h4>Chord Length</h4>
+<p id="chordOut"></p>
+</div>
+
+<div class="result-card">
+<h4>Cruise CL</h4>
+<p id="cl"></p>
+</div>
+
+<div class="result-card">
+<h4>Wing Loading</h4>
+<p id="wl"></p>
+</div>
+
+<div class="result-card">
+<h4>Reynolds Number</h4>
+<p id="re"></p>
+</div>
+
+<div class="result-card">
+<h4>Margin</h4>
+<p id="margin"></p>
+</div>
+
 </div>
 
 <h2>Airfoil Analysis</h2>
