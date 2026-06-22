@@ -7,32 +7,61 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="sidebar">
-<h2>✈ Aerothon Toolkit</h2>
-<ul>
-<li>Dashboard</li>
-<li>Airfoil Analysis</li>
-<li>Wing Sizing</li>
-<li>Weight Estimator</li>
-</ul>
-</div>
-
 <div class="main">
+
 <h1>Aerothon UAV Design Toolkit</h1>
 
 <h2>Aircraft Inputs</h2>
+
 <div class="grid">
-<div class="card"><h3>Mass (kg)</h3><input type="number" id="mass" value="4"></div>
-<div class="card"><h3>Gravity</h3><input type="number" id="g" value="9.81"></div>
-<div class="card"><h3>Density</h3><input type="number" id="rho" value="1.225"></div>
-<div class="card"><h3>Cruise Speed</h3><input type="number" id="vc" value="16"></div>
-<div class="card"><h3>Stall Speed</h3><input type="number" id="vs" value="9"></div>
+
+<div class="card">
+<h3>Mass (kg)</h3>
+<input type="number" id="mass" value="4">
 </div>
+
+<div class="card">
+<h3>Gravity</h3>
+<input type="number" id="g" value="9.81">
+</div>
+
+<div class="card">
+<h3>Density</h3>
+<input type="number" id="rho" value="1.225">
+</div>
+
+<div class="card">
+<h3>Cruise Speed (m/s)</h3>
+<input type="number" id="vc" value="15">
+</div>
+
+<div class="card">
+<h3>Stall Speed (m/s)</h3>
+<input type="number" id="vs" value="8">
+</div>
+
 <div class="card">
 <h3>Aspect Ratio</h3>
 <input type="number" id="arInput" value="8">
 </div>
-<button onclick="calculate()">Calculate</button>
+
+</div>
+
+<h2>Airfoil</h2>
+
+<select id="airfoil">
+<option>S1223</option>
+<option>NACA 7415</option>
+<option>SD7037</option>
+<option>NACA 4412</option>
+<option>E423</option>
+</select>
+
+<br><br>
+
+<button onclick="calculate()">
+Calculate
+</button>
 
 <h2>Results</h2>
 
@@ -49,7 +78,7 @@
 </div>
 
 <div class="result-card">
-<h4>Wingspan</h4>
+<h4>Wing Span</h4>
 <p id="spanOut"></p>
 </div>
 
@@ -64,13 +93,13 @@
 </div>
 
 <div class="result-card">
-<h4>Wing Loading</h4>
-<p id="wl"></p>
+<h4>Reynolds Number</h4>
+<p id="re"></p>
 </div>
 
 <div class="result-card">
-<h4>Reynolds Number</h4>
-<p id="re"></p>
+<h4>Wing Loading</h4>
+<p id="wl"></p>
 </div>
 
 <div class="result-card">
@@ -81,33 +110,10 @@
 </div>
 
 <h2>Airfoil Analysis</h2>
-<select id="airfoil">
-<option>S1223</option>
-<option>NACA 7415</option>
-<option>SD7037</option>
-</select>
-<div class="result-card"><p id="airfoilResult"></p></div>
 
-<h2>Wing Area Sizing</h2>
-<input type="number" id="targetCL" value="2.25">
-<button onclick="wingAreaCalc()">Calculate Wing Area</button>
-<div class="result-card"><p id="requiredArea"></p></div>
-
-<h2>Weight Estimator</h2>
-<div class="grid">
-<div class="card"><h3>Airframe (g)</h3><input type="number" id="airframe" value="1000"></div>
-<div class="card"><h3>Electronics (g)</h3><input type="number" id="electronics" value="900"></div>
-<div class="card"><h3>Battery (g)</h3><input type="number" id="battery" value="1350"></div>
-<div class="card"><h3>Payload (g)</h3><input type="number" id="payload" value="500"></div>
-</div>
-<button onclick="weightCalc()">Calculate Weight</button>
-<div class="results">
-<div class="result-card"><h4>Total Mass</h4><p id="totalMass"></p></div>
-<div class="result-card"><h4>Total Weight</h4><p id="totalWeight"></p></div>
+<div class="result-card">
+<p id="airfoilResult"></p>
 </div>
 
-<script src="js/airfoils.js"></script>
-<script src="js/app.js"></script>
 </div>
-</body>
 </html>
