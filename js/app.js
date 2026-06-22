@@ -10,8 +10,16 @@ function calculate() {
     const selectedAirfoil =
         document.getElementById("airfoil").value;
 
-    const clmax =
-        airfoils[selectedAirfoil].clmax;
+    const airfoilClmax =
+    airfoils[selectedAirfoil].clmax;
+
+const customClmax =
+    parseFloat(document.getElementById("customClmax").value);
+
+const clmax =
+    isNaN(customClmax)
+        ? airfoilClmax
+        : customClmax;
 
     const W = mass * g;
 
@@ -65,6 +73,9 @@ function calculate() {
 
     document.getElementById("airfoilResult").innerHTML =
         "CLmax = " + clmax.toFixed(2);
+
+    document.getElementById("clmaxUsed").innerHTML =
+    clmax.toFixed(2);
 }
 
 function weightCalc() {
